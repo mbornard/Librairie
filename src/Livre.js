@@ -7,7 +7,7 @@ export default class Livre {
         this._titre = titre;
         this._qtestock = qtestock;
         this._prix = prix;
-        //this._id = Date.now() + Math.floor(Math.random() * 10); // génération d'un id unique
+        this._id = id; // génération d'un id unique
     }
     get titre() {
         return this._titre;

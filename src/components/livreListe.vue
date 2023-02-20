@@ -69,7 +69,7 @@ function handlerMoins(livre) {
   const fetchOptions = {
     method: "PUT",
     headers: myHeaders, //{ id :livre.id, titre: livre.titre, prix : livre.prix, qtestock : livre.qtestock}
-    body: JSON.stringify(livre),
+    body: JSON.stringify({"id":livre.id, "titre": livre.titre, "prix" : livre.prix, "qtestock" :livre.qtestock}),
   };
   fetch(url, fetchOptions)
       .then((response) => {
@@ -79,6 +79,7 @@ function handlerMoins(livre) {
         console.log(dataJSON);
         if(livre.qtestock == 0) handlerDelete(livre.id);
         getBooks();
+
       })
       .catch((error) => console.log(error));
 }
@@ -87,7 +88,7 @@ function handlerMoins(livre) {
 * */
 function handlerPlus(livre) {
   console.log(livre);
-  alert(livre.id);
+  //alert(livre.id);
   livre.stockPlus();
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -95,7 +96,7 @@ function handlerPlus(livre) {
   const fetchOptions = {
     method: "PUT",
     headers: myHeaders,
-    body: JSON.stringify(livre),
+    body: JSON.stringify({"id":livre.id, "titre": livre.titre, "prix" : livre.prix, "qtestock" :livre.qtestock}),
   };
   fetch(url, fetchOptions)
       .then((response) => {
@@ -105,6 +106,7 @@ function handlerPlus(livre) {
         console.log(dataJSON);
         // actualiser la liste des livres
         getBooks();
+
       })
       .catch((error) => console.log(error));
 }
@@ -112,7 +114,7 @@ function handlerPlus(livre) {
 * Permet de supprimer un livre
 * */
 function handlerDelete(id) {
-  alert(id);
+  //alert(id);
   const fetchOptions = {
     method: "DELETE",
   };
@@ -125,6 +127,8 @@ function handlerDelete(id) {
       .then((dataJSON) => {
         console.log(dataJSON);
         getBooks();
+        getResults()
+
       })
       .catch((error) => console.log(error));
 }
@@ -132,11 +136,11 @@ function handlerDelete(id) {
 const listeLivreRes = reactive([]);
 
 function getResults(motcle) {
-  const urlRecherche ="https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/11/livres?motcle="+motcle
-alert(urlRecherche)
+  //const urlRecherche ="https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/11/livres?motcle="+motcle
+//alert(urlRecherche)
   const fetchOptions = { method: "GET" };
 
-  fetch(urlRecherche, fetchOptions)
+  fetch(url+"?search="+motcle, fetchOptions)
       .then((response) => {
         console.log(response)
         return response.json();
@@ -152,6 +156,7 @@ alert(urlRecherche)
 
 onMounted(() => {
   getBooks();
+  getResults()
 });
 </script>
 

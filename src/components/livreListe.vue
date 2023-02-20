@@ -193,12 +193,14 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   padding : 10px;
+  width: 100%;
 }
 .list
 {
   border : solid red;
-  display: flex;
-  flex-direction: row;
-  margin: 10px
+
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 </style>

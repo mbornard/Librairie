@@ -21,4 +21,21 @@ form
 {
   border: solid red;
 }
+input{
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #fff;
+  color: #444;
+  transition: border-color 0.3s ease-in-out;
+}
+
+input:focus {
+  outline: none;
+  border-color: #ad2323;
+  box-shadow: 0px 0px 5px #ad2323;
+}
+
 </style>

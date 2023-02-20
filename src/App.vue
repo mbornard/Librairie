@@ -5,10 +5,17 @@ import LivreRecherche from "./components/livreRecherche.vue"
 </script>
 
 <template>
-  <livreHeader />
+  <div class = all>
+    <livreHeader />
 
-  <livreListe />
+    <livreListe />
+  </div>
+
 </template>
 
-<style>
+<style scoped>
+.all{
+  border: solid green;
+
+}
 </style>

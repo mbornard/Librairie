@@ -82,4 +82,20 @@ table{
   font-family: The Book;
   font-size: 1.7em;
 }
+button{
+display: inline-block;
+background-color: #ffffff;
+border: none;
+padding: 3px 6px;
+text-align: center;
+text-decoration: none;
+font-size: 10px;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #ad2323;
+}
 </style>

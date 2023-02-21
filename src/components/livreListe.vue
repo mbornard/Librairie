@@ -197,9 +197,11 @@ onMounted(() => {
 }
 .list
 {
-  border : solid red;
+  /*border : solid yellow;*/
 
   margin: 10px;
+  margin-top: 30px;
+  margin-right: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }

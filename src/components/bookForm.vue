@@ -12,7 +12,7 @@ const emit = defineEmits(["newBook"]);
     <input type="text" v-model="titre" placeholder="Titre du livre" />
     <input type="number" v-model="prix" placeholder="Prix €" min="0">
     <input type="number" v-model="stock" placeholder="Qtté en stock" min="1">
-    <input type="submit" value="valider" />
+    <input type="submit" value="valider" class="button"/>
   </form>
 </template>
 
@@ -36,6 +36,10 @@ input:focus {
   outline: none;
   border-color: #ad2323;
   box-shadow: 0px 0px 5px #ad2323;
+}
+.button:hover{
+  background-color: #ad2323;
+  color: white;
 }
 
 </style>

@@ -33,6 +33,7 @@ const emit = defineEmits(["stockMoinsC", "stockPLusC", "deleteC"]);
 {
 
   margin: 10px;
+  margin-bottom: 50px;
   width: 200px;
   height: 300px;
   background: url("./image/couv.JPG") no-repeat;

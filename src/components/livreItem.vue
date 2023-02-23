@@ -13,8 +13,8 @@ const emit = defineEmits(["stockMoinsC", "stockPLusC", "deleteC"]);
         <td>{{livre.qtestock}}</td>
       </tr>
       <tr>
-        <td> Prix</td>
-        <td>{{livre.prix}} €</td>
+        <td> Prix €</td>
+        <td>{{livre.prix}} </td>
       </tr>
       <tr>
         <td> <button @click="$emit('stockMoinsC', livre)"> -1</button></td>
@@ -31,9 +31,8 @@ const emit = defineEmits(["stockMoinsC", "stockPLusC", "deleteC"]);
 
 .book
 {
-
-  margin: 10px;
-  margin-bottom: 50px;
+  /*border: red solid;*/
+  margin: 10px 10px 50px;
   width: 200px;
   height: 300px;
   background: url("./image/couv.JPG") no-repeat;
@@ -47,7 +46,8 @@ const emit = defineEmits(["stockMoinsC", "stockPLusC", "deleteC"]);
   overflow: hidden;
 }
 table{
-  padding: 70px;
+
+  padding: 45px 60px 0px 60px;
   width: 200px;
 }
 .book:hover {
@@ -66,7 +66,7 @@ table{
   height: 255px;
   position: relative;
   left: 8px;
-  background: linear-gradient(-180deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, 0) 60%);
+  /*background: linear-gradient(-180deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, 0) 60%);*/
 }
 
 .book:hover::before {
@@ -82,21 +82,27 @@ table{
 {
   font-family: The Book;
   font-size: 1.7em;
+
 }
 button{
-display: inline-block;
-background-color: #ffffff;
-border: none;
-padding: 3px 6px;
-text-align: center;
-text-decoration: none;
-font-size: 10px;
-border-radius: 4px;
-cursor: pointer;
-transition: background-color 0.3s ease-in-out;
+  display: inline-block;
+  background-color: #ffffff;
+  border: none;
+  padding: 3px 6px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  font-family: Dosis;
 }
 
 button:hover {
   background-color: #ad2323;
+}
+
+td{
+  font-family: Dosis;
 }
 </style>

@@ -1,6 +1,8 @@
 
 
 <script setup>
+
+
 import { reactive, onMounted } from "vue";
 import LivreItem from "./livreItem.vue";
 import bookForm from "./bookForm.vue";
@@ -52,6 +54,7 @@ function handlerAdd( titre, prix, stock) { //titre, prix, qtestock
       .then((dataJSON) => {
         console.log(dataJSON);
         getBooks();
+        closeForm()
       })
       .catch((error) => console.log(error));
 }
@@ -84,7 +87,7 @@ function handlerMoins(livre) {
       .catch((error) => console.log(error));
 }
 /*
-* Méthode permettant de décrémenter le stock
+* Méthode permettant de d'incrémenter le stock
 * */
 function handlerPlus(livre) {
   console.log(livre);
@@ -135,6 +138,9 @@ function handlerDelete(id) {
 
 const listeLivreRes = reactive([]);
 
+/*
+* Méthode qui permet de récupérer les résultats de la recherche d'un livre
+* */
 function getResults(motcle) {
   //const urlRecherche ="https://webmmi.iut-tlse3.fr/~pecatte/librairies/public/11/livres?motcle="+motcle
 //alert(urlRecherche)
@@ -154,6 +160,23 @@ function getResults(motcle) {
       .catch((error) => console.log(error));
 }
 
+/*
+* Ces méthodes permettenr d'ouvrir et de fermer la fenêtre pop-up qui permet
+* d'afficher le formulaire permettant d'ajouter un livre
+* */
+function openForm() {
+  document.getElementById("formAddBook").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("formAddBook").style.display = "none";
+}
+/* Permet de fermer le pop-up lorsqu'on appuie sur la touche echap*/
+document.addEventListener('keydown', function(event) {
+  if (event.key === "Escape") {
+    closeForm();
+  }
+});
 onMounted(() => {
   getBooks();
   getResults()
@@ -174,8 +197,9 @@ onMounted(() => {
         @deleteC="handlerDelete"
     />
     </div>
-    <bookForm @newBook="handlerAdd"></bookForm>
-    <div class = list>
+    <button @click="openForm()" id="ajouterLivre">Ajouter un livre</button>
+    <bookForm @newBook="handlerAdd" id="formAddBook"></bookForm>
+    <div class = list id="listTot">
       <livreItem
           v-for="livre of listeLivre"
           :key="livre.id"
@@ -192,17 +216,90 @@ onMounted(() => {
 .all{
   display: flex;
   flex-direction: column;
-  padding : 10px;
+  /*padding : 10px;*/
   width: 100%;
+
 }
 .list
 {
   /*border : solid yellow;*/
+  margin-top: -20px; /*5%*/
 
-  margin: 10px;
-  margin-top: 30px;
-  margin-right: 10px;
+  margin-right: 10px; /*0.5%*/
+  margin-left: 3%;
+  margin-bottom: 5%;
+
+
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+  max-width: 1424px;
 }
+
+/*
+CSS pour le bouton permettant l'apparition du popUP poue ajouter un livre
+*/
+#formAddBook{
+  display: none;
+  position: fixed;
+  margin-left: 150px;
+  top: 25%;
+  width:820px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+
+}
+@font-face {
+  font-family: "Dosis";
+  src: url("./Font/Dosis-VariableFont_wght.ttf");
+}
+#ajouterLivre{
+  font-family: Dosis;
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  top:50px;
+  left: 10%;
+  background-color: antiquewhite;
+  font-size: 27px;
+  border-radius: 15px;
+}
+#ajouterLivre:hover{
+  box-shadow: 5px 5px 2px #444444;
+}
+#ajouterLivre:active{
+  background-color: #ad2323;
+  color: black;
+}
+
+/*
+* On utilise les media query pour s'assurer du responsive design
+*/
+@media screen and (max-width: 1220px){
+.list{
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+}
+@media screen and (max-width: 1144px){
+
+  #ajouterLivre{
+    position: absolute;
+    top: 160px;
+    left : 0px
+  }
+
+  .list{
+
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+}
+@media screen and (max-width: 752px){
+  .list{
+
+    grid-template-columns: 1fr 1fr ;
+  }
+}
+
+
 </style>

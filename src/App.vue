@@ -7,25 +7,28 @@ import LivreRecherche from "./components/livreRecherche.vue"
 <template >
 
     <livreHeader />
-
     <livreListe class ="all"/>
 
 
 </template>
 
 <style scoped>
-.all{
-  border: solid green;
-
+template{
 }
 
-.all
-{
-  background: url("./components/image/biblio.jpeg");
-  background-size: contain;
+.all{
+  background: url("./components/image/biblio.jpeg")  ;
+  background-size: 100%;
+  max-width: 1424px;
   /*background-position: center;*/
   background-repeat: repeat-y;
-  background-position-y: 160px;
 
+}
+/*
+* On utilise les media query pour s'assurer du responsive design
+*/
+@media screen and (max-width: 1144px){
+  .all{
+  }
 }
 </style>
